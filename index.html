@@ -4,15 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>[Redacted] Hub</title>
-    <!-- FontAwesome for the clean dashboard icons -->
-    <link rel="stylesheet" href="https://cloudflare.com">
     <style>
         :root {
             --bg-dark: #07060b;
             --bg-nav: #0d0b14;
             --card-purple: #130f22;
             --neon-glow: #8a2be2;
-            --neon-cyan: #00f2fe;
             --accent-purple: #a855f7;
             --text-white: #ffffff;
             --text-gray: #94a3b8;
@@ -27,11 +24,6 @@
 
         body {
             background-color: var(--bg-dark);
-            background-image: linear-gradient(180deg, rgba(13,11,20,0.6) 0%, rgba(7,6,11,1) 100%), 
-                              url('https://unsplash.com'); /* Subtle city/abstract backdrop */
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
             color: var(--text-white);
             min-height: 100vh;
             display: flex;
@@ -105,39 +97,36 @@
             word-spacing: 2px;
         }
 
-        /* Centralized Tab Navigation Buttons */
+        /* Restructured Text-Only Navigation Bar */
         .tab-navigation {
             display: inline-flex;
-            background: rgba(19, 15, 34, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 0.5rem;
+            background: rgba(19, 15, 34, 0.8);
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            padding: 0.4rem;
             border-radius: 12px;
-            gap: 0.5rem;
+            gap: 0.4rem;
             backdrop-filter: blur(5px);
             margin-bottom: 4rem;
+            min-width: 400px;
+            justify-content: center;
         }
 
         .tab-btn {
             font-family: 'Segoe UI', sans-serif;
             background: transparent;
-            border: none;
+            border: 1px solid transparent;
             color: var(--text-gray);
-            padding: 0.7rem 1.8rem;
+            padding: 0.8rem 1.8rem;
             border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
             font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
+            flex: 1;
+            text-align: center;
         }
 
-        .tab-btn i {
-            font-size: 1.1rem;
-        }
-
-        /* Active Tab Styling matching your reference image */
+        /* Active Tab Styling */
         .tab-btn.active {
             background: rgba(138, 43, 226, 0.25);
             color: var(--text-white);
@@ -152,8 +141,8 @@
 
         /* Dynamic Content Sections */
         .tab-content {
-            display: none; /* Hidden by default, toggled via JS */
-            animation: fadeIn 0.5s ease forwards;
+            display: none; 
+            animation: fadeIn 0.4s ease forwards;
         }
 
         .tab-content.active-content {
@@ -161,24 +150,8 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Centralized Category Icon Layout */
-        .center-icon-wrapper {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 80px;
-            height: 80px;
-            background: rgba(138, 43, 226, 0.15);
-            border: 2px solid var(--neon-glow);
-            border-radius: 20px;
-            font-size: 2.2rem;
-            color: var(--accent-purple);
-            margin-bottom: 1.5rem;
-            box-shadow: 0 0 25px rgba(138, 43, 226, 0.4);
         }
 
         .section-headline {
@@ -209,7 +182,7 @@
         .iframe-wrapper {
             position: relative;
             width: 100%;
-            padding-top: 56.25%; /* Clean 16:9 widescreen ratio */
+            padding-top: 56.25%; 
             background: #000;
             border-radius: 8px;
             overflow: hidden;
@@ -244,7 +217,6 @@
             color: var(--text-gray);
         }
 
-        /* Action Buttons */
         .action-btn {
             font-family: 'Segoe UI', sans-serif;
             background: linear-gradient(135deg, #a855f7 0%, #8a2be2 100%);
@@ -262,10 +234,9 @@
 
         .action-btn:hover {
             transform: scale(1.03);
-            box-shadow: 0 4px 20px rgba(138, 43, 226, 0.6);
         }
 
-        /* Placeholder layouts for movies/shows dashboards */
+        /* Layout grids for streaming content dashboards */
         .placeholder-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -278,14 +249,15 @@
             background: var(--card-purple);
             border: 1px solid rgba(255,255,255,0.05);
             border-radius: 12px;
-            height: 280px;
+            height: 180px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             color: var(--text-gray);
             font-family: 'Segoe UI', sans-serif;
-            font-size: 0.9rem;
+            font-size: 1.1rem;
+            font-weight: 600;
             cursor: pointer;
             transition: 0.3s;
         }
@@ -295,32 +267,59 @@
             box-shadow: 0 0 15px rgba(138, 43, 226, 0.2);
             color: white;
         }
-
-        .media-poster-card i {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            color: var(--accent-purple);
-        }
     </style>
 </head>
 <body>
 
-    <!-- Header View -->
     <header>
         <div class="top-logo">[Redacted]</div>
         <a href="#" class="top-nav-home">Home</a>
     </header>
 
-    <!-- Content Workspace -->
     <div class="hub-container">
         
-        <div class="badge"><i class="fa-solid fa-circle fa-xs" style="color: #a855f7; margin-right: 5px;"></i> Community Hub</div>
+        <div class="badge">Community Hub</div>
         <h1 class="main-title">[Redacted]</h1>
         <p class="subtitle">Your community hub for games, movies, anime & shows</p>
 
-        <!-- Dynamic Menu Selector Layout -->
+        <!-- Fixed Text Navigation Component -->
         <div class="tab-navigation">
-            <button class="tab-btn active" onclick="switchTab('games-tab')">
-                <i class="fa-solid fa-gamepad"></i> Games
-            </button>
-            <button class="tab-btn" onclick="switchTab('movies-tab')">
+            <button class="tab-btn active" onclick="switchTab(event, 'games-tab')">Games</button>
+            <button class="tab-btn" onclick="switchTab(event, 'movies-tab')">Movies</button>
+            <button class="tab-btn" onclick="switchTab(event, 'anime-tab')">Anime</button>
+            <button class="tab-btn" onclick="switchTab(event, 'shows-tab')">Shows</button>
+        </div>
+
+        <!-- Games Content -->
+        <div id="games-tab" class="tab-content active-content">
+            <h2 class="section-headline">Games</h2>
+            <p class="section-description">Browse the full library of playable HTML games.</p>
+            
+            <div class="display-showcase">
+                <div class="iframe-wrapper">
+                    <iframe src="./clADOFAI.html" allowfullscreen></iframe>
+                </div>
+                <div class="showcase-footer">
+                    <div class="showcase-title">
+                        <h3>clADOFAI Arcade Build</h3>
+                        <p>Community Rhythm Room Module</p>
+                    </div>
+                    <button class="action-btn">View All Games</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Movies Content -->
+        <div id="movies-tab" class="tab-content">
+            <h2 class="section-headline">Movies</h2>
+            <p class="section-description">Community cinema watchlists and weekend streaming scheduling panels.</p>
+            
+            <div class="placeholder-grid">
+                <div class="media-poster-card">Friday Night Pick</div>
+                <div class="media-poster-card">Top Rated</div>
+                <div class="media-poster-card">History</div>
+            </div>
+        </div>
+
+        <!-- Anime Content -->
+        <div id="anime-tab" class="tab-content">
