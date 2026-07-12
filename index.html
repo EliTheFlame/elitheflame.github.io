@@ -323,3 +323,4 @@
 
         <!-- Anime Content -->
         <div id="anime-tab" class="tab-content">
+AnimeSeasonal visual layout tracking discussion forums and watch groups.Trending This WeekClassicsFan FavoritesShowsBinge trackers and community television recommendations boards.Currently AiringBox SetsSuggest a Showfunction switchTab(event, tabId) {// Remove active status from all layout buttonsconst buttons = document.querySelectorAll('.tab-btn');buttons.forEach(btn => btn.classList.remove('active'));// Clear visible state from content nodesconst contents = document.querySelectorAll('.tab-content');contents.forEach(content => content.classList.remove('active-content'));// Set current target button to active display rulesevent.currentTarget.classList.add('active');// Show selected information card containerdocument.getElementById(tabId).classList.add('active-content');}
