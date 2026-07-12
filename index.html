@@ -66,6 +66,7 @@
             text-align: center;
             padding: 4rem 2rem;
             margin-top: 2rem;
+            flex-grow: 1;
         }
 
         .badge {
@@ -97,7 +98,7 @@
             word-spacing: 2px;
         }
 
-        /* Restructured Text-Only Navigation Bar */
+        /* Text Navigation Bar */
         .tab-navigation {
             display: inline-flex;
             background: rgba(19, 15, 34, 0.8);
@@ -267,13 +268,24 @@
             box-shadow: 0 0 15px rgba(138, 43, 226, 0.2);
             color: white;
         }
+
+        footer {
+            width: 100%;
+            text-align: center;
+            padding: 2rem;
+            font-family: 'Segoe UI', sans-serif;
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 4rem;
+        }
     </style>
 </head>
 <body>
 
     <header>
         <div class="top-logo">[Redacted]</div>
-        <a href="#" class="top-nav-home">Home</a>
+        <a href="#" class="top-nav-home" onclick="location.reload(); return false;">Home</a>
     </header>
 
     <div class="hub-container">
@@ -282,7 +294,7 @@
         <h1 class="main-title">[Redacted]</h1>
         <p class="subtitle">Your community hub for games, movies, anime & shows</p>
 
-        <!-- Fixed Text Navigation Component -->
+        <!-- Navigation Buttons -->
         <div class="tab-navigation">
             <button class="tab-btn active" onclick="switchTab(event, 'games-tab')">Games</button>
             <button class="tab-btn" onclick="switchTab(event, 'movies-tab')">Movies</button>
@@ -304,7 +316,8 @@
                         <h3>clADOFAI Arcade Build</h3>
                         <p>Community Rhythm Room Module</p>
                     </div>
-                    <button class="action-btn">View All Games</button>
+                    <!-- Fixed Button: Resets frame context -->
+                    <button class="action-btn" onclick="document.querySelector('iframe').src='./clADOFAI.html'">Reset Arcade</button>
                 </div>
             </div>
         </div>
@@ -312,15 +325,4 @@
         <!-- Movies Content -->
         <div id="movies-tab" class="tab-content">
             <h2 class="section-headline">Movies</h2>
-            <p class="section-description">Community cinema watchlists and weekend streaming scheduling panels.</p>
-            
-            <div class="placeholder-grid">
-                <div class="media-poster-card">Friday Night Pick</div>
-                <div class="media-poster-card">Top Rated</div>
-                <div class="media-poster-card">History</div>
-            </div>
-        </div>
-
-        <!-- Anime Content -->
-        <div id="anime-tab" class="tab-content">
-AnimeSeasonal visual layout tracking discussion forums and watch groups.Trending This WeekClassicsFan FavoritesShowsBinge trackers and community television recommendations boards.Currently AiringBox SetsSuggest a Showfunction switchTab(event, tabId) {// Remove active status from all layout buttonsconst buttons = document.querySelectorAll('.tab-btn');buttons.forEach(btn => btn.classList.remove('active'));// Clear visible state from content nodesconst contents = document.querySelectorAll('.tab-content');contents.forEach(content => content.classList.remove('active-content'));// Set current target button to active display rulesevent.currentTarget.classList.add('active');// Show selected information card containerdocument.getElementById(tabId).classList.add('active-content');}
+Community cinema watchlists and weekend streaming scheduling panels.Friday Night PickTop RatedHistoryAnimeSeasonal visual layout tracking discussion forums and watch groups.Trending This WeekClassicsFan FavoritesShowsBinge trackers and community television recommendations boards.Currently AiringBox SetsSuggest a Show © 2026 [Redacted] Hub. All Rights Reserved.function switchTab(event, tabId) {// Remove active status from all layout buttonsconst buttons = document.querySelectorAll('.tab-btn');buttons.forEach(btn => btn.classList.remove('active'));// Clear visible state from content nodesconst contents = document.querySelectorAll('.tab-content');contents.forEach(content => content.classList.remove('active-content'));// Set current target button to active display rulesevent.currentTarget.classList.add('active');// Show selected information card containerdocument.getElementById(tabId).classList.add('active-content');}
