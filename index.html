@@ -177,7 +177,7 @@
             padding: 1.5rem;
             box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
             max-width: 800px;
-            margin: 0 auto;
+            margin: 0 auto 3rem;
         }
 
         .iframe-wrapper {
@@ -237,7 +237,7 @@
             transform: scale(1.03);
         }
 
-        /* Layout grids for streaming content dashboards */
+        /* Layout grids for elements */
         .placeholder-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -250,7 +250,7 @@
             background: var(--card-purple);
             border: 1px solid rgba(255,255,255,0.05);
             border-radius: 12px;
-            height: 180px;
+            height: 140px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -261,12 +261,21 @@
             font-weight: 600;
             cursor: pointer;
             transition: 0.3s;
+            padding: 1rem;
+            text-align: center;
         }
 
         .media-poster-card:hover {
             border-color: var(--neon-glow);
             box-shadow: 0 0 15px rgba(138, 43, 226, 0.2);
             color: white;
+        }
+
+        .media-poster-card span {
+            font-size: 0.8rem;
+            color: var(--accent-purple);
+            margin-top: 0.4rem;
+            font-weight: normal;
         }
 
         footer {
@@ -305,53 +314,15 @@
         <!-- Games Content -->
         <div id="games-tab" class="tab-content active-content">
             <h2 class="section-headline">Games</h2>
-            <p class="section-description">Browse the full library of playable HTML games.</p>
+            <p class="section-description">Select an arcade card below to load the game into the screen.</p>
             
+            <!-- Main Live Player Showcase -->
             <div class="display-showcase">
                 <div class="iframe-wrapper">
-                    <iframe src="./clADOFAI.html" allowfullscreen></iframe>
+                    <iframe id="arcade-player" src="./clADOFAI.html" allowfullscreen></iframe>
                 </div>
                 <div class="showcase-footer">
                     <div class="showcase-title">
-                        <h3>clADOFAI Arcade Build</h3>
-                        <p>Community Rhythm Room Module</p>
+                        <h3 id="arcade-title">clADOFAI Arcade Build</h3>
+                        <p id="arcade-desc">Community Rhythm Room Module</p>
                     </div>
-                    <!-- Fixed Button: Resets frame context -->
-                    <button class="action-btn" onclick="document.querySelector('iframe').src='./clADOFAI.html'">Reset Arcade</button>
-                </div>
-
-        <!-- Movies Content -->
-        <div id="movies-tab" class="tab-content">
-            <h2 class="section-headline">Movies</h2>
-             <!-- Shows Content -->
-        <div id="shows-tab" class="tab-content">
-            <h2 class="section-headline">Shows</h2>
-            <p class="section-description">Binge trackers and community television recommendations boards.</p>
-            
-            <div class="placeholder-grid">
-                <div class="media-poster-card">Currently Airing</div>
-                <div class="media-poster-card">Box Sets</div>
-                <div class="media-poster-card">Suggest a Show</div>
-            </div>
-        </div>
-
-    </div> <!-- THIS is where the hub-container should finally close! -->
-
-    <footer>
-        <p>&copy; 2026 [Redacted] Hub. All Rights Reserved.</p>
-    </footer>
-
-    <script>
-        function switchTab(event, tabId) {
-            const buttons = document.querySelectorAll('.tab-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-
-            const contents = document.querySelectorAll('.tab-content');
-            contents.forEach(content => content.classList.remove('active-content'));
-
-            event.currentTarget.classList.add('active');
-            document.getElementById(tabId).classList.add('active-content');
-        }
-    </script>
-</body>
-</html>
