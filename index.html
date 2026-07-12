@@ -319,9 +319,39 @@
                     <!-- Fixed Button: Resets frame context -->
                     <button class="action-btn" onclick="document.querySelector('iframe').src='./clADOFAI.html'">Reset Arcade</button>
                 </div>
-            </div>
-        </div>
 
         <!-- Movies Content -->
         <div id="movies-tab" class="tab-content">
             <h2 class="section-headline">Movies</h2>
+             <!-- Shows Content -->
+        <div id="shows-tab" class="tab-content">
+            <h2 class="section-headline">Shows</h2>
+            <p class="section-description">Binge trackers and community television recommendations boards.</p>
+            
+            <div class="placeholder-grid">
+                <div class="media-poster-card">Currently Airing</div>
+                <div class="media-poster-card">Box Sets</div>
+                <div class="media-poster-card">Suggest a Show</div>
+            </div>
+        </div>
+
+    </div> <!-- THIS is where the hub-container should finally close! -->
+
+    <footer>
+        <p>&copy; 2026 [Redacted] Hub. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function switchTab(event, tabId) {
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active-content'));
+
+            event.currentTarget.classList.add('active');
+            document.getElementById(tabId).classList.add('active-content');
+        }
+    </script>
+</body>
+</html>
