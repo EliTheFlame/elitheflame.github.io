@@ -4,140 +4,219 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>[Redacted] Hub</title>
+    <!-- FontAwesome for the clean dashboard icons -->
+    <link rel="stylesheet" href="https://cloudflare.com">
     <style>
-        /* Cyberpunk Dark Theme Variables */
         :root {
-            --bg-color: #0d0e12;
-            --card-bg: #161920;
+            --bg-dark: #07060b;
+            --bg-nav: #0d0b14;
+            --card-purple: #130f22;
+            --neon-glow: #8a2be2;
             --neon-cyan: #00f2fe;
-            --neon-magenta: #fe019a;
-            --text-main: #e2e8f0;
-            --text-muted: #94a3b8;
+            --accent-purple: #a855f7;
+            --text-white: #ffffff;
+            --text-gray: #94a3b8;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, sans-serif;
-            scroll-behavior: smooth;
+            font-family: 'Impact', 'Arial Black', sans-serif;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
+            background-color: var(--bg-dark);
+            background-image: linear-gradient(180deg, rgba(13,11,20,0.6) 0%, rgba(7,6,11,1) 100%), 
+                              url('https://unsplash.com'); /* Subtle city/abstract backdrop */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text-white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        /* Navigation Bar */
+        /* Top Header Navbar */
         header {
-            position: sticky;
-            top: 0;
-            background: rgba(13, 14, 18, 0.95);
-            border-bottom: 2px solid var(--neon-cyan);
-            box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
-            z-index: 1000;
-            padding: 1rem 2rem;
+            width: 100%;
+            background-color: rgba(13, 11, 20, 0.7);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(138, 43, 226, 0.2);
+            padding: 1rem 4rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #fff;
+        .top-logo {
+            font-size: 2.2rem;
+            letter-spacing: 3px;
+            color: var(--text-white);
             text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 0 8px var(--neon-magenta);
+            text-shadow: 0 0 15px var(--neon-glow);
         }
 
-        .logo span {
-            color: var(--neon-cyan);
-            text-shadow: 0 0 8px var(--neon-cyan);
-        }
-
-        nav a {
-            color: var(--text-main);
+        .top-nav-home {
+            font-family: 'Segoe UI', sans-serif;
+            color: var(--accent-purple);
             text-decoration: none;
-            margin-left: 1.5rem;
-            font-weight: 600;
-            transition: 0.3s;
-            text-transform: uppercase;
             font-size: 0.9rem;
+            font-weight: 600;
         }
 
-        nav a:hover {
-            color: var(--neon-magenta);
-            text-shadow: 0 0 8px var(--neon-magenta);
-        }
-
-        /* Hero / Welcome Section */
-        .hero {
-            padding: 6rem 2rem 4rem;
+        /* Main Hero Hub Container */
+        .hub-container {
+            max-width: 1000px;
+            width: 100%;
             text-align: center;
-            background: linear-gradient(180deg, rgba(22,25,32,0) 0%, rgba(22,25,32,1) 100%);
+            padding: 4rem 2rem;
+            margin-top: 2rem;
         }
 
-        .hero h1 {
-            font-size: 3rem;
+        .badge {
+            display: inline-block;
+            font-family: 'Segoe UI', sans-serif;
+            background: rgba(138, 43, 226, 0.2);
+            border: 1px solid var(--neon-glow);
+            color: var(--accent-purple);
+            padding: 0.4rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0 10px rgba(138, 43, 226, 0.3);
+        }
+
+        .main-title {
+            font-size: 5rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
             margin-bottom: 1rem;
-            text-shadow: 0 0 10px rgba(254, 1, 154, 0.5);
+            text-shadow: 0 0 20px rgba(255,255,255,0.1);
         }
 
-        .hero p {
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0auto;
+        .subtitle {
+            font-family: 'Segoe UI', sans-serif;
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            word-spacing: 2px;
+        }
+
+        /* Centralized Tab Navigation Buttons */
+        .tab-navigation {
+            display: inline-flex;
+            background: rgba(19, 15, 34, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 0.5rem;
+            border-radius: 12px;
+            gap: 0.5rem;
+            backdrop-filter: blur(5px);
+            margin-bottom: 4rem;
+        }
+
+        .tab-btn {
+            font-family: 'Segoe UI', sans-serif;
+            background: transparent;
+            border: none;
+            color: var(--text-gray);
+            padding: 0.7rem 1.8rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn i {
             font-size: 1.1rem;
         }
 
-        /* Content Sections */
-        section {
-            padding: 5rem 2rem 2rem;
-            max-width: 1200px;
+        /* Active Tab Styling matching your reference image */
+        .tab-btn.active {
+            background: rgba(138, 43, 226, 0.25);
+            color: var(--text-white);
+            border: 1px solid var(--neon-glow);
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.4);
+        }
+
+        .tab-btn:hover:not(.active) {
+            color: var(--text-white);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Dynamic Content Sections */
+        .tab-content {
+            display: none; /* Hidden by default, toggled via JS */
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .tab-content.active-content {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Centralized Category Icon Layout */
+        .center-icon-wrapper {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            background: rgba(138, 43, 226, 0.15);
+            border: 2px solid var(--neon-glow);
+            border-radius: 20px;
+            font-size: 2.2rem;
+            color: var(--accent-purple);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0 25px rgba(138, 43, 226, 0.4);
+        }
+
+        .section-headline {
+            font-size: 3rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+        }
+
+        .section-description {
+            font-family: 'Segoe UI', sans-serif;
+            color: var(--text-gray);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Dashboard Play Display Frame */
+        .display-showcase {
+            background: var(--card-purple);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            max-width: 800px;
             margin: 0 auto;
         }
 
-        section h2 {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            border-left: 4px solid var(--neon-magenta);
-            padding-left: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Grid Layout for Content Cards */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid #262930;
-            border-radius: 8px;
-            overflow: hidden;
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--neon-cyan);
-            box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
-        }
-
-        /* Embedded HTML Game Container */
-        .game-container {
+        .iframe-wrapper {
             position: relative;
             width: 100%;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            padding-top: 56.25%; /* Clean 16:9 widescreen ratio */
             background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .game-container iframe {
+        .iframe-wrapper iframe {
             position: absolute;
             top: 0;
             left: 0;
@@ -146,122 +225,102 @@
             border: none;
         }
 
-        .card-info {
-            padding: 1.5rem;
-        }
-
-        .card-info h3 {
-            margin-bottom: 0.5rem;
-        }
-
-        .card-info p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* Media Placeholders styling */
-        .media-placeholder {
-            height: 180px;
-            background: linear-gradient(45deg, #1e222b, #161920);
+        .showcase-footer {
+            font-family: 'Segoe UI', sans-serif;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            font-weight: bold;
+            margin-top: 1.2rem;
+            text-align: left;
         }
 
-        footer {
-            text-align: center;
-            padding: 3rem;
-            color: var(--text-muted);
+        .showcase-title h3 {
+            font-size: 1.2rem;
+            color: var(--text-white);
+        }
+
+        .showcase-title p {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+        }
+
+        /* Action Buttons */
+        .action-btn {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #a855f7 0%, #8a2be2 100%);
+            border: none;
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
             font-size: 0.9rem;
-            border-top: 1px solid #161920;
-            margin-top: 4rem;
+            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
+            transition: 0.2s;
+        }
+
+        .action-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 4px 20px rgba(138, 43, 226, 0.6);
+        }
+
+        /* Placeholder layouts for movies/shows dashboards */
+        .placeholder-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .media-poster-card {
+            background: var(--card-purple);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 12px;
+            height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-gray);
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .media-poster-card:hover {
+            border-color: var(--neon-glow);
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.2);
+            color: white;
+        }
+
+        .media-poster-card i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-purple);
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Navigation -->
+    <!-- Header View -->
     <header>
-        <div class="logo">[Redacted] <span>Hub</span></div>
-        <nav>
-            <a href="#games">Games</a>
-            <a href="#movies">Movies</a>
-            <a href="#anime">Anime</a>
-            <a href="#shows">Shows</a>
-        </nav>
+        <div class="top-logo">[Redacted]</div>
+        <a href="#" class="top-nav-home">Home</a>
     </header>
 
-    <!-- Welcome Message -->
-    <div class="hero">
-        <h1>Welcome to the Hub</h1>
-        <p>A chill, community-first space to play web games and share our favorite streaming setups. Pull up a chair.</p>
-    </div>
+    <!-- Content Workspace -->
+    <div class="hub-container">
+        
+        <div class="badge"><i class="fa-solid fa-circle fa-xs" style="color: #a855f7; margin-right: 5px;"></i> Community Hub</div>
+        <h1 class="main-title">[Redacted]</h1>
+        <p class="subtitle">Your community hub for games, movies, anime & shows</p>
 
-    <!-- Games Section -->
-    <section id="games">
-        <h2>Games</h2>
-        <div class="grid">
-            <!-- Game Card 1 -->
-            <div class="card">
-                <div class="game-container">
-                    <!-- Replace URL below with your own HTML game link or itch.io embed link -->
-                    <iframe src="https://itch.io" allowfullscreen></iframe>
-                </div>
-                <div class="card-info">
-                    <h3>Community Arcade Title</h3>
-                    <p>Play directly inside your browser window. Controls: Arrow keys & Spacebar.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Movies Section -->
-    <section id="movies">
-        <h2>Movies</h2>
-        <div class="grid">
-            <div class="card">
-                <div class="media-placeholder">Watchlist Spotlight</div>
-                <div class="card-info">
-                    <h3>Community Choice Movie</h3>
-                    <p>Our upcoming Friday night stream pick. Chat details pinned in Discord.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Anime Section -->
-    <section id="anime">
-        <h2>Anime</h2>
-        <div class="grid">
-            <div class="card">
-                <div class="media-placeholder">Seasonal Discussion</div>
-                <div class="card-info">
-                    <h3>Top Rated Show</h3>
-                    <p>Current seasonal favorite voted on by the community server chat room.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Shows Section -->
-    <section id="shows">
-        <h2>Shows</h2>
-        <div class="grid">
-            <div class="card">
-                <div class="media-placeholder">Binge List</div>
-                <div class="card-info">
-                    <h3>Recommended Series</h3>
-                    <p>Perfect background watch while grinding ranks with the squad.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 [Redacted] Hub. Built for the community.</p>
-    </footer>
-
-</body>
-</html>
+        <!-- Dynamic Menu Selector Layout -->
+        <div class="tab-navigation">
+            <button class="tab-btn active" onclick="switchTab('games-tab')">
+                <i class="fa-solid fa-gamepad"></i> Games
+            </button>
+            <button class="tab-btn" onclick="switchTab('movies-tab')">
